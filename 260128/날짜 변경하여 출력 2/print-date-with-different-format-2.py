@@ -1,0 +1,6 @@
+datetime = input()
+mm, dd, yyyy = datetime.split('-')
+mm = int(mm)
+dd = int(dd)
+yyyy = int(yyyy)
+print(f"{yyyy}.{mm}.{dd}")

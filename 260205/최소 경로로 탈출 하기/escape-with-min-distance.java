@@ -29,7 +29,7 @@ class Main {
         }
     }
     public static boolean inRange(int i, int j){
-        return i >= 0 && i < N && j >= 0 && j < N;
+        return i >= 0 && i < N && j >= 0 && j < M;
     }
     public static boolean canGo(int row, int col){
         if(!inRange(row,col)) return false;

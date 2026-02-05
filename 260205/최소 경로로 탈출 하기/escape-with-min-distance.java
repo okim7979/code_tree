@@ -41,8 +41,8 @@ class Main {
         N = Integer.parseInt(st.nextToken());
         M = Integer.parseInt(st.nextToken());
 
-        grid = new int[N][N];
-        visited = new int[N][N];
+        grid = new int[N][M];
+        visited = new int[N][M];
 
         for (int i = 0; i < N; i++) {
             st = new StringTokenizer(br.readLine());

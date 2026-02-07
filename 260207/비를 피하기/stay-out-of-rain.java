@@ -48,7 +48,7 @@ class Main {
                 int ny = y + dy[i];
 
                 if(canGo(nx, ny) && visited[nx][ny] == 0){
-                    visited[nx][ny] += visited[x][y]+1;
+                    visited[nx][ny] = visited[x][y]+1;
                     q.add(new int[]{nx, ny});
                 }
             }
@@ -79,38 +79,28 @@ class Main {
                 int num = Integer.parseInt(st.nextToken());
                 grid[i][j] = num;
                 if(num == 3){
-                    
+
                     endPoints.add(new endPoint(i, j));
                 } else if(num == 2){
-                    
+
                     startPoints.add(new startPoint(i, j));
                 }
             }
         }
         ans = new int[N][N];
+        visited = new int[N][N];
+        for(endPoint e : endPoints){
+            visited[e.endx][e.endy] = 1;
+            q.add(new int[]{e.endx, e.endy});
+        }
+        bfs();
         for(startPoint s : startPoints){
-
-            visited = new int[N][N];
-            q.add(new int[]{s.startx, s.starty});
-            visited[s.startx][s.starty] = 1;
-            bfs();
-            int finTime = 10001;
-
-            for(endPoint e : endPoints){
-                if(visited[e.endx][e.endy] != 0){
-
-                    if(visited[e.endx][e.endy] < finTime){
-                        finTime = visited[e.endx][e.endy];
-                    }
-                }
-            }
-            if(finTime == 10001){
+            if(visited[s.startx][s.starty] == 0){
                 ans[s.startx][s.starty] = -1;
             } else {
-                ans[s.startx][s.starty] = finTime - 1;
+                ans[s.startx][s.starty] = visited[s.startx][s.starty] - 1;
             }
         }
-
         for(int i = 0; i < N; i++){
             for(int j = 0; j < N; j++){
                 sb.append(ans[i][j]).append(" ");

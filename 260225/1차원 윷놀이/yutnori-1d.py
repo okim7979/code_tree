@@ -24,13 +24,12 @@ def choose(curr_num):
         return
 
     for i in range(k):
-        if num_is_over[i] >= m:
-            continue
 
         num_is_over[i] += nums[curr_num]
         choose(curr_num+1)
 
         num_is_over[i] -= nums[curr_num]
+
 
 choose(0)
 print(max_num)

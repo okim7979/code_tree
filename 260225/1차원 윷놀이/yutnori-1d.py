@@ -19,18 +19,21 @@ def findings():
         max_num = count
 
 def choose(curr_num):
-    findings()
     if curr_num == n:
+        findings()
         return
 
     for i in range(k):
+        if num_is_over[i] >= m:
+            choose(curr_num + 1)
+            continue
 
-        if num_is_over[i] < m:
-            num_is_over[i] += nums[curr_num]
-            choose(curr_num+1)
-            num_is_over[i] -= nums[curr_num]
+        num_is_over[i] += nums[curr_num]
+        choose(curr_num+1)
 
+        num_is_over[i] -= nums[curr_num]
 
+    
 
 
 choose(0)

@@ -20,21 +20,17 @@ def canGo(r, c, pre_num):
 
 def backtracking(r, c):
     global max_depth
+    max_depth = max(max_depth, len(num_list))
     for i in range(1, n):
         nx = r + dxs[move_dir[r][c] - 1]*i
         ny = c + dys[move_dir[r][c] - 1]*i
         if canGo(nx, ny, num[r][c]):
             num_list.append(num[nx][ny])
             backtracking(nx, ny)
-
             num_list.pop()
-        else:
-            if len(num_list) > max_depth:
-                max_depth = len(num_list)
-            return
 
 num_list.append(num[r-1][c-1])
 backtracking(r-1, c-1)
 
-print(max_depth)
+print(max_depth - 1)
 
